@@ -1,0 +1,19 @@
+{
+  "name": "compressphoto",
+  "version": "1.0.0",
+  "description": "Government exam photo compressor — compressphoto.in",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,1074 @@
+{
+  "categories": [
+    {
+      "id": "ssc",
+      "name": "SSC",
+      "fullName": "Staff Selection Commission",
+      "icon": "🏛️",
+      "exams": [
+        {
+          "id": "ssc-cgl",
+          "name": "SSC CGL",
+          "fullName": "SSC Combined Graduate Level",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size photo with white background. Recent photograph (within 3 months)."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper. Clean signature only."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ssc-chsl",
+          "name": "SSC CHSL",
+          "fullName": "SSC Combined Higher Secondary Level",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ssc-mts",
+          "name": "SSC MTS",
+          "fullName": "SSC Multi Tasking Staff",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ssc-cpo",
+          "name": "SSC CPO",
+          "fullName": "SSC Central Police Organisations",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ssc-gd",
+          "name": "SSC GD Constable",
+          "fullName": "SSC General Duty Constable",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background. No cap, sunglasses."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ssc-steno",
+          "name": "SSC Stenographer",
+          "fullName": "SSC Stenographer Grade C & D",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size with white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ssc.nic.in",
+          "lastVerified": "2024-11-15",
+          "cycle": "2024-25"
+        }
+      ]
+    },
+    {
+      "id": "upsc",
+      "name": "UPSC",
+      "fullName": "Union Public Service Commission",
+      "icon": "🎖️",
+      "exams": [
+        {
+          "id": "upsc-cse",
+          "name": "UPSC Civil Services (IAS/IPS)",
+          "fullName": "UPSC Civil Services Examination",
+          "photo": {
+            "maxSizeKB": 300,
+            "minSizeKB": 50,
+            "widthPx": 300,
+            "heightPx": 350,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Colour passport photograph with white background. Face clearly visible."
+          },
+          "signature": {
+            "maxSizeKB": 60,
+            "minSizeKB": 10,
+            "widthPx": 300,
+            "heightPx": 100,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://upsc.gov.in",
+          "lastVerified": "2024-10-20",
+          "cycle": "2025"
+        },
+        {
+          "id": "upsc-nda",
+          "name": "UPSC NDA",
+          "fullName": "National Defence Academy & Naval Academy",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 300,
+            "heightPx": 350,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size recent photograph with plain white background."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 300,
+            "heightPx": 80,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink signature on white paper."
+          },
+          "officialLink": "https://upsc.gov.in",
+          "lastVerified": "2024-10-20",
+          "cycle": "2025"
+        },
+        {
+          "id": "upsc-cds",
+          "name": "UPSC CDS",
+          "fullName": "Combined Defence Services",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 300,
+            "heightPx": 350,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Plain white background, passport size photograph."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 300,
+            "heightPx": 80,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black/blue ink on white paper."
+          },
+          "officialLink": "https://upsc.gov.in",
+          "lastVerified": "2024-10-20",
+          "cycle": "2025"
+        },
+        {
+          "id": "upsc-capf",
+          "name": "UPSC CAPF",
+          "fullName": "Central Armed Police Forces AC",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 300,
+            "heightPx": 350,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 300,
+            "heightPx": 80,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://upsc.gov.in",
+          "lastVerified": "2024-10-20",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "gate",
+      "name": "GATE",
+      "fullName": "Graduate Aptitude Test in Engineering",
+      "icon": "🔬",
+      "exams": [
+        {
+          "id": "gate-2025",
+          "name": "GATE 2025",
+          "fullName": "Graduate Aptitude Test in Engineering 2025",
+          "photo": {
+            "maxSizeKB": 480,
+            "minSizeKB": 100,
+            "widthPx": 480,
+            "heightPx": 640,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Colour photo with white background. No cap. Recent photograph."
+          },
+          "signature": {
+            "maxSizeKB": 150,
+            "minSizeKB": 10,
+            "widthPx": 640,
+            "heightPx": 240,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black/dark ink. Signature on plain white paper."
+          },
+          "officialLink": "https://gate2025.iitr.ac.in",
+          "lastVerified": "2024-09-15",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "neet",
+      "name": "NEET",
+      "fullName": "National Eligibility cum Entrance Test",
+      "icon": "🏥",
+      "exams": [
+        {
+          "id": "neet-ug",
+          "name": "NEET UG",
+          "fullName": "NEET Undergraduate",
+          "photo": {
+            "maxSizeKB": 200,
+            "minSizeKB": 50,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Latest passport size photo with white background. Face must be clearly visible. No cap, goggles."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 150,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Sign in running handwriting. Black/blue ink."
+          },
+          "officialLink": "https://neet.nta.nic.in",
+          "lastVerified": "2025-01-10",
+          "cycle": "2025"
+        },
+        {
+          "id": "neet-pg",
+          "name": "NEET PG",
+          "fullName": "NEET Postgraduate",
+          "photo": {
+            "maxSizeKB": 300,
+            "minSizeKB": 50,
+            "widthPx": 640,
+            "heightPx": 480,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport photo with white background. Clear face visibility."
+          },
+          "signature": {
+            "maxSizeKB": 100,
+            "minSizeKB": 10,
+            "widthPx": 640,
+            "heightPx": 240,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://nbe.edu.in",
+          "lastVerified": "2025-01-10",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "jee",
+      "name": "JEE",
+      "fullName": "Joint Entrance Examination",
+      "icon": "⚙️",
+      "exams": [
+        {
+          "id": "jee-main",
+          "name": "JEE Main",
+          "fullName": "Joint Entrance Examination Main",
+          "photo": {
+            "maxSizeKB": 300,
+            "minSizeKB": 10,
+            "widthPx": 400,
+            "heightPx": 500,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size colour photo. White background. Name and date of photo should be printed on the photo."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 800,
+            "heightPx": 300,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Signature on white paper with black/blue pen."
+          },
+          "officialLink": "https://jeemain.nta.nic.in",
+          "lastVerified": "2025-01-05",
+          "cycle": "2025"
+        },
+        {
+          "id": "jee-advanced",
+          "name": "JEE Advanced",
+          "fullName": "Joint Entrance Examination Advanced",
+          "photo": {
+            "maxSizeKB": 300,
+            "minSizeKB": 50,
+            "widthPx": 600,
+            "heightPx": 800,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "High quality colour photograph with light (white) background. No glasses. Face clearly visible."
+          },
+          "signature": {
+            "maxSizeKB": 100,
+            "minSizeKB": 10,
+            "widthPx": 800,
+            "heightPx": 300,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://jeeadv.ac.in",
+          "lastVerified": "2025-01-05",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "railway",
+      "name": "Railway",
+      "fullName": "Railway Recruitment Board",
+      "icon": "🚂",
+      "exams": [
+        {
+          "id": "rrb-ntpc",
+          "name": "RRB NTPC",
+          "fullName": "RRB Non-Technical Popular Categories",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Colour photograph with plain white background. Photo must not be more than 3 months old."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://indianrailways.gov.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "rrb-group-d",
+          "name": "RRB Group D",
+          "fullName": "RRB Level 1 (Group D)",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink signature on white paper."
+          },
+          "officialLink": "https://indianrailways.gov.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "rrb-alp",
+          "name": "RRB ALP",
+          "fullName": "RRB Assistant Loco Pilot",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size with white background. No cap."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://indianrailways.gov.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "rrb-je",
+          "name": "RRB JE",
+          "fullName": "RRB Junior Engineer",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent colour photo with plain white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://indianrailways.gov.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "rpf",
+          "name": "RPF Constable/SI",
+          "fullName": "Railway Protection Force",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size recent photo with white background. No cap, sunglasses."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://indianrailways.gov.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "banking",
+      "name": "Banking",
+      "fullName": "Banking Sector Exams",
+      "icon": "🏦",
+      "exams": [
+        {
+          "id": "ibps-po",
+          "name": "IBPS PO",
+          "fullName": "IBPS Probationary Officer",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Digital passport photo with white background. Face clearly visible."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black/blue ink on white paper."
+          },
+          "officialLink": "https://ibps.in",
+          "lastVerified": "2024-10-10",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "ibps-clerk",
+          "name": "IBPS Clerk",
+          "fullName": "IBPS Clerk CRP",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black/blue ink on white paper."
+          },
+          "officialLink": "https://ibps.in",
+          "lastVerified": "2024-10-10",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "sbi-po",
+          "name": "SBI PO",
+          "fullName": "State Bank of India Probationary Officer",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Colour passport photo with white background. Clear face."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper. Running handwriting."
+          },
+          "officialLink": "https://sbi.co.in/careers",
+          "lastVerified": "2024-10-10",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "sbi-clerk",
+          "name": "SBI Clerk",
+          "fullName": "State Bank of India Junior Associate",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size colour photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://sbi.co.in/careers",
+          "lastVerified": "2024-10-10",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "rbi-grade-b",
+          "name": "RBI Grade B",
+          "fullName": "Reserve Bank of India Grade B Officer",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport photo with light/white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://rbi.org.in/Scripts/Opportunities.aspx",
+          "lastVerified": "2024-10-10",
+          "cycle": "2024-25"
+        }
+      ]
+    },
+    {
+      "id": "defence",
+      "name": "Defence",
+      "fullName": "Defence Recruitment Exams",
+      "icon": "⭐",
+      "exams": [
+        {
+          "id": "afcat",
+          "name": "AFCAT",
+          "fullName": "Air Force Common Admission Test",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 10,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "blue",
+            "bgRequired": true,
+            "bgHex": "#003580",
+            "notes": "Passport size recent photo with BLUE background. No cap."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 200,
+            "heightPx": 80,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://careerindianairforce.cdac.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "indian-army-agniveer",
+          "name": "Army Agniveer",
+          "fullName": "Indian Army Agniveer Recruitment",
+          "photo": {
+            "maxSizeKB": 50,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size photo with plain white background."
+          },
+          "signature": {
+            "maxSizeKB": 20,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://joinindianarmy.nic.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "coast-guard",
+          "name": "Indian Coast Guard",
+          "fullName": "Indian Coast Guard Navik/Yantrik",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size colour photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 30,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://joinindiancoastguard.gov.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "teaching",
+      "name": "Teaching",
+      "fullName": "Teaching & Education Exams",
+      "icon": "📚",
+      "exams": [
+        {
+          "id": "ctet",
+          "name": "CTET",
+          "fullName": "Central Teacher Eligibility Test",
+          "photo": {
+            "maxSizeKB": 200,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Passport size recent photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ctet.nic.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        },
+        {
+          "id": "ugc-net",
+          "name": "UGC NET",
+          "fullName": "UGC National Eligibility Test",
+          "photo": {
+            "maxSizeKB": 300,
+            "minSizeKB": 50,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent colour passport photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 100,
+            "minSizeKB": 10,
+            "widthPx": 200,
+            "heightPx": 80,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://ugcnet.nta.nic.in",
+          "lastVerified": "2024-12-01",
+          "cycle": "2025"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "name": "State PSC",
+      "fullName": "State Public Service Commission",
+      "icon": "🗺️",
+      "exams": [
+        {
+          "id": "bpsc",
+          "name": "BPSC",
+          "fullName": "Bihar Public Service Commission",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://bpsc.bih.nic.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "uppsc",
+          "name": "UPPSC",
+          "fullName": "Uttar Pradesh Public Service Commission",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://uppsc.up.nic.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2024-25"
+        },
+        {
+          "id": "mpsc",
+          "name": "MPSC",
+          "fullName": "Maharashtra Public Service Commission",
+          "photo": {
+            "maxSizeKB": 100,
+            "minSizeKB": 20,
+            "widthPx": 200,
+            "heightPx": 230,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Recent passport size photo with white background."
+          },
+          "signature": {
+            "maxSizeKB": 50,
+            "minSizeKB": 10,
+            "widthPx": 140,
+            "heightPx": 60,
+            "format": "JPEG",
+            "bgColor": "white",
+            "bgRequired": true,
+            "bgHex": "#FFFFFF",
+            "notes": "Black ink on white paper."
+          },
+          "officialLink": "https://mpsc.gov.in",
+          "lastVerified": "2024-11-01",
+          "cycle": "2024-25"
+        }
+      ]
+    }
+  ]
+}

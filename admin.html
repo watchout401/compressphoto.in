@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel — CompressPhoto.in</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── Admin-specific styles ── */
+    body { background: var(--bg-primary); }
+
+    /* Login Screen */
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 48px 44px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+    }
+    .login-card h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .login-card p  { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 28px; }
+    .login-input {
+      width: 100%; box-sizing: border-box;
+      padding: 12px 16px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      outline: none;
+    }
+    .login-input:focus { border-color: var(--accent-primary); }
+    .login-error { color: #f87171; font-size: 0.8rem; min-height: 18px; margin-bottom: 10px; }
+
+    /* Admin Layout */
+    .admin-wrap   { display: none; flex-direction: column; min-height: 100vh; }
+    .admin-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 28px;
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .admin-header .logo-text { font-size: 1.1rem; font-weight: 700; }
+    .admin-header .logo-text span { color: var(--accent-primary); }
+    .admin-body   { padding: 28px; flex: 1; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+
+    /* Stats row */
+    .admin-stats  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .admin-stat-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 20px 22px;
+    }
+    .admin-stat-card .stat-num  { font-size: 2rem; font-weight: 700; color: var(--accent-primary); }
+    .admin-stat-card .stat-lbl  { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* Toolbar */
+    .admin-toolbar {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .admin-search {
+      flex: 1; min-width: 220px;
+      padding: 10px 16px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 0.9rem; outline: none;
+    }
+    .admin-search:focus { border-color: var(--accent-primary); }
+    .admin-filter {
+      padding: 10px 14px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 0.85rem; outline: none; cursor: pointer;
+    }
+
+    /* Table */
+    .admin-table-wrap {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .admin-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .admin-table thead th {
+      padding: 14px 16px;
+      text-align: left;
+      background: rgba(0,0,0,0.02);
+      border-bottom: 1px solid var(--bg-glass-border);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .admin-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .admin-table tbody tr:last-child { border-bottom: none; }
+    .admin-table tbody tr:hover { background: rgba(14, 165, 233, 0.04); }
+    .admin-table td { padding: 12px 16px; vertical-align: middle; }
+
+    .badge-cat {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 600;
+      background: var(--primary-glow);
+      color: var(--primary-dark);
+    }
+    .spec-chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 600;
+      background: rgba(0,0,0,0.04);
+      color: var(--text-secondary);
+      margin: 1px;
+    }
+    .bg-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    .action-btns { display: flex; gap: 6px; }
+    .btn-edit   { padding: 5px 12px; border-radius: 7px; font-size: 0.78rem; background: rgba(14, 165, 233, 0.1); color: var(--primary-dark); border: 1px solid rgba(14, 165, 233, 0.3); cursor: pointer; }
+    .btn-del    { padding: 5px 12px; border-radius: 7px; font-size: 0.78rem; background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); cursor: pointer; }
+    .btn-edit:hover { background: rgba(14, 165, 233, 0.2); }
+    .btn-del:hover  { background: rgba(239,68,68,0.2); }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      width: 100%; max-width: 760px;
+      padding: 32px;
+      animation: slideUp 0.25s ease;
+      margin: auto;
+    }
+    @keyframes slideUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .modal-header h2 { font-size: 1.2rem; margin: 0; color: var(--text-primary); }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px; }
+    .modal-close:hover { color: var(--danger); }
+
+    .form-grid   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group  { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1/-1; }
+    .form-label  { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    .form-input, .form-select, .form-textarea {
+      padding: 10px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--primary); }
+    .form-select option { background: var(--bg-surface); color: var(--text-primary); }
+    .form-textarea { resize: vertical; min-height: 70px; font-family: inherit; }
+
+    .section-divider {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; color: var(--primary-dark);
+      margin: 22px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--primary-glow);
+    }
+    .modal-actions {
+      display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end;
+    }
+
+    /* Toast */
+    #admin-toast {
+      position: fixed; bottom: 24px; right: 24px;
+      padding: 12px 20px; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 500;
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 2000;
+    }
+    #admin-toast.show {
+      opacity: 1; transform: translateY(0);
+    }
+    #admin-toast.success { background: rgba(16,185,129,0.9); color: #fff; }
+    #admin-toast.error   { background: rgba(239,68,68,0.9);  color: #fff; }
+    #admin-toast.info    { background: rgba(108,99,255,0.9); color: #fff; }
+
+    /* Empty state */
+    .table-empty {
+      text-align: center; padding: 60px 20px;
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+    .table-empty span { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+
+    /* Import/Export section */
+    .admin-io {
+      display: flex; gap: 12px; align-items: center;
+      margin-bottom: 24px; flex-wrap: wrap;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 16px 20px;
+    }
+    .admin-io-label { font-size: 0.8rem; color: var(--text-muted); margin-right: 4px; font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .admin-stats { grid-template-columns: repeat(2,1fr); }
+      .form-grid   { grid-template-columns: 1fr; }
+      .admin-body  { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════ LOGIN SCREEN ══════ -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card glass-card">
+    <div style="font-size:2.5rem;margin-bottom:12px;">🔐</div>
+    <h1>Admin Panel</h1>
+    <p>compressphoto.in — Exam Spec Manager</p>
+    <input class="login-input" type="password" id="login-pass"
+           placeholder="Enter admin password" autocomplete="current-password"/>
+    <div class="login-error" id="login-error"></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="doLogin()">
+      Sign In →
+    </button>
+    <p style="margin-top:20px;font-size:0.72rem;color:var(--text-muted);">
+      Default password: <code>admin123</code> — Change after first login.
+    </p>
+    <a href="/" style="display:block;margin-top:16px;font-size:0.8rem;color:var(--accent-primary);">
+      ← Back to CompressPhoto
+    </a>
+  </div>
+</div>
+
+<!-- ══════ ADMIN APP ══════ -->
+<div class="admin-wrap" id="admin-wrap">
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="logo-text">compress<span>photo</span>.in &nbsp;•&nbsp; Admin</div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span id="last-saved-label" style="font-size:0.75rem;color:var(--text-muted);"></span>
+      <a href="/" class="btn btn-secondary" style="padding:7px 14px;font-size:0.8rem;">← Main Site</a>
+      <button class="btn btn-secondary" style="padding:7px 14px;font-size:0.8rem;" onclick="doLogout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- Stats -->
+    <div class="admin-stats">
+      <div class="admin-stat-card">
+        <div class="stat-num" id="stat-cats">—</div>
+        <div class="stat-lbl">Categories</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-num" id="stat-exams">—</div>
+        <div class="stat-lbl">Total Exams</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-num" id="stat-modified">0</div>
+        <div class="stat-lbl">Edits This Session</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-num" style="font-size:1.2rem;color:#10b981;" id="stat-saved">✓ Saved</div>
+        <div class="stat-lbl">localStorage Status</div>
+      </div>
+    </div>
+
+    <!-- Import/Export Bar -->
+    <div class="admin-io">
+      <span class="admin-io-label">📂 Data:</span>
+      <button class="btn btn-secondary" style="padding:8px 16px;font-size:0.82rem;" onclick="exportJSON()">
+        ⬇️ Export JSON
+      </button>
+      <label class="btn btn-secondary" style="padding:8px 16px;font-size:0.82rem;cursor:pointer;">
+        ⬆️ Import JSON
+        <input type="file" accept=".json" style="display:none;" onchange="importJSON(event)">
+      </label>
+      <button class="btn btn-secondary" style="padding:8px 16px;font-size:0.82rem;" onclick="resetToOriginal()">
+        🔄 Reset to Original
+      </button>
+      <span style="flex:1;"></span>
+      <span style="font-size:0.75rem;color:var(--text-muted);">Changes auto-save to browser storage. Export JSON to deploy.</span>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="admin-toolbar">
+      <input class="admin-search" id="admin-search" type="text"
+             placeholder="🔍  Search exam name or category..." oninput="renderTable()"/>
+      <select class="admin-filter" id="cat-filter" onchange="renderTable()">
+        <option value="">All Categories</option>
+      </select>
+      <button class="btn btn-primary" style="padding:10px 18px;font-size:0.85rem;" onclick="openAddModal()">
+        ＋ Add Exam
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="exam-table">
+        <thead>
+          <tr>
+            <th>Exam Name</th>
+            <th>Category</th>
+            <th>Photo Spec</th>
+            <th>Signature Spec</th>
+            <th>Bg Color</th>
+            <th>Verified</th>
+            <th>Cycle</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr><td colspan="8"><div class="table-empty"><span>⏳</span>Loading...</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /.admin-body -->
+</div><!-- /.admin-wrap -->
+
+<!-- ══════ EDIT/ADD MODAL ══════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOutsideClick(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-header">
+      <h2 id="modal-title">Edit Exam</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <form id="exam-form" onsubmit="saveExam(event)">
+      <!-- Hidden fields -->
+      <input type="hidden" id="f-cat-id"/>
+      <input type="hidden" id="f-exam-id"/>
+      <input type="hidden" id="f-is-new"/>
+
+      <!-- Basic Info -->
+      <div class="section-divider">📋 Basic Information</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Short Name *</label>
+          <input class="form-input" id="f-name" placeholder="e.g. SSC CGL" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input class="form-input" id="f-fullname" placeholder="e.g. SSC Combined Graduate Level" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category *</label>
+          <select class="form-select" id="f-cat" required></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cycle / Year</label>
+          <input class="form-input" id="f-cycle" placeholder="e.g. 2024-25"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Official Link</label>
+          <input class="form-input" id="f-link" type="url" placeholder="https://ssc.nic.in"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Verified (YYYY-MM-DD)</label>
+          <input class="form-input" id="f-verified" type="date"/>
+        </div>
+      </div>
+
+      <!-- Photo Spec -->
+      <div class="section-divider">📷 Photo Specification</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Max Size (KB) *</label>
+          <input class="form-input" id="f-p-max" type="number" min="1" max="5000" placeholder="50" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Min Size (KB)</label>
+          <input class="form-input" id="f-p-min" type="number" min="0" max="500" placeholder="20"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Width (px) *</label>
+          <input class="form-input" id="f-p-w" type="number" min="1" placeholder="200" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Height (px) *</label>
+          <input class="form-input" id="f-p-h" type="number" min="1" placeholder="230" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Format</label>
+          <select class="form-select" id="f-p-fmt">
+            <option value="JPEG">JPEG</option>
+            <option value="PNG">PNG</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Background Color</label>
+          <select class="form-select" id="f-p-bg">
+            <option value="white">White</option>
+            <option value="blue">Blue</option>
+            <option value="cream">Cream</option>
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">BG Required?</label>
+          <select class="form-select" id="f-p-bgreq">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Photo Notes</label>
+          <textarea class="form-textarea" id="f-p-notes" placeholder="Optional notes about photo requirements..."></textarea>
+        </div>
+      </div>
+
+      <!-- Signature Spec -->
+      <div class="section-divider">✍️ Signature Specification</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Max Size (KB) *</label>
+          <input class="form-input" id="f-s-max" type="number" min="1" max="1000" placeholder="20" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Min Size (KB)</label>
+          <input class="form-input" id="f-s-min" type="number" min="0" placeholder="10"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Width (px) *</label>
+          <input class="form-input" id="f-s-w" type="number" min="1" placeholder="140" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Height (px) *</label>
+          <input class="form-input" id="f-s-h" type="number" min="1" placeholder="60" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Format</label>
+          <select class="form-select" id="f-s-fmt">
+            <option value="JPEG">JPEG</option>
+            <option value="PNG">PNG</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Background Color</label>
+          <select class="form-select" id="f-s-bg">
+            <option value="white">White</option>
+            <option value="blue">Blue</option>
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Signature Notes</label>
+          <textarea class="form-textarea" id="f-s-notes" placeholder="Optional notes about signature requirements..."></textarea>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="modal-save-btn">💾 Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="admin-toast"></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

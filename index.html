@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CompressPhoto.in — Exam Photo Compressor for SSC, UPSC, NEET, JEE, Railway & More</title>
+  <meta name="description" content="Free instant photo compressor for Indian government exams. SSC, UPSC, NEET, JEE, Railway, Banking — get the exact size, dimension & background as per official requirements.">
+  <meta name="keywords" content="exam photo compressor, SSC photo size, NEET photo compress, JEE photo resize, UPSC photo, Railway exam photo, government exam photo">
+  <meta property="og:title" content="CompressPhoto.in — Exam Photo Compressor">
+  <meta property="og:description" content="Free photo compressor for all Indian government exams. Exact size, dimensions & background.">
+  <meta property="og:url" content="https://compressphoto.in">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/upload.css">
+  <link rel="stylesheet" href="css/result.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ══════ HEADER ══════ -->
+  <header class="site-header">
+    <a href="/" class="logo" aria-label="CompressPhoto Home">
+      <div class="logo-icon">📸</div>
+      <span class="logo-text">compress<span>photo</span>.in</span>
+    </a>
+
+    <!-- Desktop Tab Switcher -->
+    <div class="header-center">
+      <div class="header-tabs" role="tablist">
+        <button class="header-tab active" data-tab="photo"     role="tab" aria-selected="true"  id="tab-photo">📷 Photo</button>
+        <button class="header-tab"        data-tab="signature" role="tab" aria-selected="false" id="tab-signature">✍️ Signature</button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <a href="admin.html" class="btn btn-secondary text-xs" style="padding:7px 14px;" title="Admin Panel">⚙️ Admin</a>
+    </div>
+  </header>
+
+  <!-- Mobile Tab Bar -->
+  <div class="mobile-tab-bar" role="tablist">
+    <button class="header-tab active mobile-tab" data-tab="photo"     role="tab">📷 Photo</button>
+    <button class="header-tab        mobile-tab" data-tab="signature" role="tab">✍️ Signature</button>
+  </div>
+
+  <!-- Mobile Exam Selector Bar -->
+  <div class="mobile-exam-bar">
+    <button class="mobile-exam-selector-btn" id="mobile-exam-selector-btn" aria-label="Select Exam">
+      <span id="mobile-exam-label">Select an exam...</span>
+      <span>▼</span>
+    </button>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open exam list">☰</button>
+  </div>
+
+  <!-- ══════ MAIN LAYOUT ══════ -->
+  <main class="main-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Exam Categories">
+
+      <div class="sidebar-header">
+        <h2>Select Exam</h2>
+        <div class="sidebar-search">
+          <span class="sidebar-search-icon">🔍</span>
+          <input type="text"
+                 id="sidebar-search"
+                 placeholder="Search exam..."
+                 aria-label="Search exams"
+                 autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="category-list" id="category-list" role="list">
+        <!-- Populated by examData.js -->
+        <div class="sidebar-empty hidden" id="sidebar-empty">
+          <span class="empty-icon">🔎</span>
+          <p>No exams found</p>
+        </div>
+      </div>
+
+      <!-- Stats footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-stats">
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-val" id="stat-categories">9</div>
+            <div class="sidebar-stat-label">Categories</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-val" id="stat-exams">30+</div>
+            <div class="sidebar-stat-label">Exams</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-val">Free</div>
+            <div class="sidebar-stat-label">Always</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── MOBILE SIDEBAR OVERLAY ── -->
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- ── CONTENT AREA ── -->
+    <div class="content-area">
+
+      <!-- 1. Spec Panel / Placeholder -->
+      <div class="spec-placeholder glass-card p-4" id="spec-placeholder">
+        <span class="placeholder-icon">👈</span>
+        <h3>Select an exam to get started</h3>
+        <p>Pick any exam category from the left panel.<br>
+           We'll show you the exact photo requirements instantly.</p>
+      </div>
+
+      <div class="spec-panel hidden glass-card" id="spec-panel">
+        <!-- Populated dynamically by examData.js -->
+      </div>
+
+      <!-- 2. Upload Section -->
+      <div class="upload-section">
+
+        <!-- Drop Zone -->
+        <div class="upload-area glass-card" id="upload-zone" role="button"
+             aria-label="Click or drag to upload photo" tabindex="0"
+             style="position:relative;">
+
+          <!-- LOCKED OVERLAY — visible until exam is selected -->
+          <div id="upload-lock-overlay" style="
+            position:absolute; inset:0; z-index:10;
+            background:rgba(7,7,15,0.72);
+            backdrop-filter:blur(4px);
+            border-radius:inherit;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            gap:10px; cursor:not-allowed;
+            border-radius:20px;
+          ">
+            <span style="font-size:2rem;">🔒</span>
+            <p style="font-size:0.9rem;font-weight:600;color:var(--text-secondary);text-align:center;padding:0 20px;">
+              Select an exam from the left panel first
+            </p>
+            <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;padding:0 24px;">
+              We need to know your exam specs before you upload
+            </p>
+          </div>
+
+          <!-- Default upload UI -->
+          <div class="upload-content" id="upload-content">
+            <div class="upload-icon-wrap">📤</div>
+            <p class="upload-title">Drop your photo here</p>
+            <p class="upload-subtitle desktop-only">or click to browse files</p>
+
+            <div class="upload-buttons">
+              <button type="button" class="btn btn-primary mobile-only" id="btn-camera" style="width: 100%; box-shadow: 0 4px 15px rgba(14,165,233,0.3);">
+                📷 Take Photo Now
+              </button>
+              <button type="button" class="btn btn-secondary mobile-only" id="btn-browse-mobile" style="width: 100%; pointer-events: none;">
+                📂 Browse Files
+              </button>
+            </div>
+
+            <span class="upload-hint" style="margin-top: 10px;">
+              <span>📁</span> JPEG, PNG — Max 15 MB
+            </span>
+          </div>
+
+          <!-- Reading progress bar (shown while file loads into memory) -->
+          <div id="upload-read-wrap" style="
+            display:none; width:100%; flex-direction:column;
+            align-items:center; gap:14px; padding:20px;
+          ">
+            <div style="font-size:2rem;">📂</div>
+            <p style="font-size:0.9rem;font-weight:600;color:var(--text-primary);">Reading photo...</p>
+            <div style="width:100%;max-width:280px;height:6px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;">
+              <div id="upload-read-fill" style="height:100%;width:0%;background:var(--grad-primary);border-radius:100px;transition:width 0.2s ease;"></div>
+            </div>
+            <span id="upload-read-pct" style="font-size:0.78rem;color:var(--text-muted);">0%</span>
+          </div>
+
+          <!-- Preview (hidden until file selected) -->
+          <div class="preview-wrap hidden" id="preview-wrap">
+            <div class="preview-image-container">
+              <img id="preview-img" src="" alt="Preview" class="preview-img" />
+              <button class="preview-remove-btn" id="preview-remove-btn"
+                      title="Remove photo" aria-label="Remove uploaded photo">✕</button>
+            </div>
+            <div class="preview-file-info">
+              <span class="preview-info-chip">📄 <span id="preview-filename">—</span></span>
+              <span class="preview-info-chip">⚖️ <span id="preview-filesize">—</span></span>
+            </div>
+          </div>
+
+          <input type="file" id="file-input" accept="image/*" aria-hidden="true" style="display:none;" />
+          <input type="file" id="camera-input" accept="image/*" capture="environment" aria-hidden="true" style="display:none;" />
+        </div>
+
+        <!-- Background check result -->
+        <div class="bg-check-chip hidden" id="bg-check-chip"></div>
+
+        <!-- 🔒 Privacy & Performance Note -->
+        <div style="
+          display:flex; align-items:flex-start; gap:10px;
+          padding:12px 16px;
+          background:rgba(108,99,255,0.06);
+          border:1px solid rgba(108,99,255,0.15);
+          border-radius:10px;
+          font-size:0.78rem;
+          line-height:1.6;
+          color:var(--text-secondary);
+        ">
+          <span style="font-size:1.1rem;flex-shrink:0;margin-top:1px;">🖥️</span>
+          <span>
+            <strong style="color:var(--text-primary);">Processed on your device — 100% Private.</strong>
+            For your security and privacy, all photo processing (compression, background removal) happens
+            directly on your device using your system's power. Your photo is <strong>never sent to any server.</strong>
+            Processing speed depends on your device performance.
+          </span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="upload-actions">
+          <button class="btn btn-primary btn-lg" id="btn-compress" disabled>
+            ⚡ Compress Photo
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Progress Section -->
+      <div class="progress-section glass-card" id="progress-section">
+        <div class="progress-header">
+          <div class="progress-label">
+            <div class="spinner"></div>
+            <span id="progress-label-text">Starting...</span>
+          </div>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="progress-steps">
+          <div class="progress-step" id="step-detect">
+            <span class="step-dot"></span>
+            <span>Analysing background color</span>
+          </div>
+          <div class="progress-step" id="step-remove">
+            <span class="step-dot"></span>
+            <span>Background removal (on your device)</span>
+          </div>
+          <div class="progress-step" id="step-compress">
+            <span class="step-dot"></span>
+            <span>Compressing & resizing</span>
+          </div>
+          <div class="progress-step" id="step-done">
+            <span class="step-dot"></span>
+            <span>Finalising output</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Result Section -->
+      <section class="result-section glass-card" id="result-section"
+               aria-label="Compressed Photo Result" scroll-margin-top="90px">
+
+        <div class="result-header">
+          <div class="result-success-icon">✅</div>
+          <div class="result-title-group">
+            <h2>Your photo is ready! 🎉</h2>
+            <p>Compressed to exact exam specifications</p>
+          </div>
+          <div class="hidden" id="bg-removed-tag">
+            <span class="badge badge-primary">🤖 BG Removed</span>
+          </div>
+        </div>
+
+        <!-- Before / After Comparison -->
+        <div class="comparison-grid">
+
+          <!-- Before -->
+          <div class="comparison-card before">
+            <div class="comparison-label">
+              <span>Before</span>
+              <span class="text-muted text-xs">Original</span>
+            </div>
+            <div class="comparison-img-wrap">
+              <img id="before-img" src="" alt="Original photo" class="comparison-img" />
+            </div>
+            <div class="comparison-stats">
+              <div class="stat-row">
+                <span class="stat-row-label">Size</span>
+                <span class="stat-row-value" id="before-size">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-row-label">Dimensions</span>
+                <span class="stat-row-value" id="before-dims">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-row-label">Format</span>
+                <span class="stat-row-value" id="before-fmt">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- After -->
+          <div class="comparison-card after">
+            <div class="comparison-label">
+              <span>After</span>
+              <span class="badge badge-success">✓ Exam Ready</span>
+            </div>
+            <div class="comparison-img-wrap">
+              <img id="after-img" src="" alt="Compressed photo" class="comparison-img" />
+            </div>
+            <div class="comparison-stats">
+              <div class="stat-row">
+                <span class="stat-row-label">Size</span>
+                <span class="stat-row-value good" id="after-size">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-row-label">Dimensions</span>
+                <span class="stat-row-value good" id="after-dims">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-row-label">Format</span>
+                <span class="stat-row-value" id="after-fmt">—</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-row-label">Quality</span>
+                <span class="stat-row-value good" id="after-quality">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Savings Banner -->
+        <div class="savings-banner">
+          <div class="savings-icon">🗜️</div>
+          <div class="savings-text">
+            <strong id="savings-from-to">— KB → — KB</strong>
+            <p id="savings-pct">—% smaller • Highest possible quality maintained</p>
+          </div>
+          <div id="quality-badge" class="quality-badge excellent">
+            <span class="quality-dot"></span>
+            <span class="quality-label">Excellent Quality</span>
+          </div>
+        </div>
+
+        <!-- Below-minimum size warning (shown only when image is inherently tiny) -->
+        <div id="below-min-banner" class="hidden" style="
+          padding: 12px 16px;
+          background: rgba(245,158,11,0.08);
+          border: 1px solid rgba(245,158,11,0.3);
+          border-radius: 10px;
+          font-size: 0.82rem;
+          color: #f59e0b;
+          line-height: 1.6;
+        "></div>
+
+        <!-- Download & Share -->
+        <div class="result-actions">
+          <button class="btn btn-primary btn-lg" id="btn-download-jpeg">
+            ⬇️ Download JPEG
+          </button>
+          <button class="btn btn-success btn-lg" id="btn-download-png">
+            ⬇️ Download PNG
+          </button>
+          <button class="share-btn" id="btn-share">
+            📤 Share
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="result-footer">
+          <p class="result-disclaimer">
+            ⚠️ Always verify photo specs from the
+            <a href="#" id="result-official-link" target="_blank" rel="noopener">official notification</a>
+            before submitting. Requirements may change.
+            compressphoto.in is not affiliated with any government body.
+          </p>
+          <button class="btn btn-secondary process-again-btn" id="btn-process-again">
+            🔄 Process Another
+          </button>
+        </div>
+
+      </section>
+
+    </div><!-- /.content-area -->
+  </main><!-- /.main-layout -->
+
+  <!-- Disclaimer Footer -->
+  <footer class="disclaimer">
+    compressphoto.in is an independent utility tool. Not affiliated with SSC, NTA, UPSC, or any government body.
+    All image processing is done in your browser — your photos are never stored on our servers. |
+    <a href="#" onclick="alert('Privacy Policy: Your photos are processed locally and/or deleted immediately after processing. We do not store, sell, or share your images.')">Privacy</a>
+  </footer>
+
+</div><!-- /.app-wrapper -->
+
+<!-- Toast Container -->
+<div id="toast-container" aria-live="polite"></div>
+
+<!-- JavaScript Modules (order matters) -->
+<script src="js/examData.js"></script>
+<script src="js/bgDetect.js"></script>
+<script src="js/bgRemove.js"></script>
+<script src="js/compress.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/share.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
