@@ -37,6 +37,44 @@ const Compress = (() => {
   }
 
   // ──────────────────────────────────────────────────────────
+  // Pre-scale large images to prevent RAM crashes
+  // ──────────────────────────────────────────────────────────
+  async function preScale(source, maxPx = 1800) {
+    const img = await loadImage(source);
+    if (img.width <= maxPx && img.height <= maxPx) {
+      return source; // Original file/blob perfectly fine
+    }
+    const scale = maxPx / Math.max(img.width, img.height);
+    const targetW = Math.round(img.width * scale);
+    const targetH = Math.round(img.height * scale);
+
+    const canvas  = document.createElement('canvas');
+    canvas.width  = targetW;
+    canvas.height = targetH;
+    const ctx = canvas.getContext('2d', { willReadFrequently: false });
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, 0, 0, targetW, targetH);
+
+    return await canvasToBlob(canvas, 'JPEG', 0.95);
+  }
+
+  // ──────────────────────────────────────────────────────────
+  // Artificially pad file with null bytes to hit minimum KB
+  // ──────────────────────────────────────────────────────────
+  async function padBlob(blob, minSizeKB) {
+    if (!minSizeKB) return blob;
+    const currentKB = blob.size / 1024;
+    if (currentKB >= minSizeKB) return blob;
+    
+    // Add 1.5KB buffer to confidently cross the gateway limit
+    const bytesToAdd = Math.ceil((minSizeKB - currentKB + 1.5) * 1024);
+    const padding = new Uint8Array(bytesToAdd); // naturally initialized to zeros
+    
+    return new Blob([blob, padding], { type: blob.type });
+  }
+
+  // ──────────────────────────────────────────────────────────
   // Draw image to canvas at target dimensions
   // Uses step-down downsampling for better quality on large reductions
   // ──────────────────────────────────────────────────────────
@@ -109,15 +147,22 @@ const Compress = (() => {
   async function findBestQuality(canvas, format, maxSizeKB, minSizeKB) {
     // PNG is lossless — just output and report if out of range
     if (format === 'PNG') {
-      const blob    = await canvasToBlob(canvas, 'PNG', 1.0);
-      const sizeKB  = blob.size / 1024;
+      let blob    = await canvasToBlob(canvas, 'PNG', 1.0);
+      let sizeKB  = blob.size / 1024;
+      
+      // Pad to minSize if required
+      if (minSizeKB && sizeKB < minSizeKB) {
+        blob = await padBlob(blob, minSizeKB);
+        sizeKB = blob.size / 1024;
+      }
+      
       const rounded = Math.round(sizeKB * 10) / 10;
       return {
         blob,
         quality:       1.0,
         sizeKB:        rounded,
         withinTarget:  sizeKB <= maxSizeKB,
-        belowMin:      minSizeKB && sizeKB < minSizeKB,
+        belowMin:      false, // forced false via padding
         qualityWarning: false,
         qualityPercent: 100,
       };
@@ -131,12 +176,16 @@ const Compress = (() => {
 
     if (absoluteTopKB < (minSizeKB || 0)) {
       // Cannot reach minimum even at 100% quality — inherently small image
+      // Let's artificially pad the original blob array
+      const paddedBlob = await padBlob(absoluteTopBlob, minSizeKB);
+      const finalKB = paddedBlob.size / 1024;
+
       return {
-        blob:          absoluteTopBlob,
+        blob:          paddedBlob,
         quality:       1.0,
-        sizeKB:        Math.round(absoluteTopKB * 10) / 10,
-        withinTarget:  absoluteTopKB <= maxSizeKB,
-        belowMin:      true,
+        sizeKB:        Math.round(finalKB * 10) / 10,
+        withinTarget:  finalKB <= maxSizeKB,
+        belowMin:      false, // mathematically padded
         qualityWarning: false,
         qualityPercent: 100,
       };
@@ -182,13 +231,20 @@ const Compress = (() => {
         }
       }
 
-      const finalKB = best.size / 1024;
+      let finalKB = best.size / 1024;
+      
+      // If still below minSizeKB, forcefully pad it
+      if (finalKB < (minSizeKB || 0)) {
+        best = await padBlob(best, minSizeKB);
+        finalKB = best.size / 1024;
+      }
+
       return {
         blob:          best,
         quality:       bestQ,
         sizeKB:        Math.round(finalKB * 10) / 10,
         withinTarget:  finalKB <= maxSizeKB,
-        belowMin:      finalKB < (minSizeKB || 0),
+        belowMin:      false, // inherently padded
         qualityWarning: false,
         qualityPercent: Math.round(bestQ * 100),
       };
@@ -220,13 +276,20 @@ const Compress = (() => {
       bestQ = low;
     }
 
-    const finalKB = best.size / 1024;
+    let finalKB = best.size / 1024;
+
+    // Safety pad in case our search landed below minSizeKB unexpectedly
+    if (minSizeKB && finalKB < minSizeKB) {
+      best = await padBlob(best, minSizeKB);
+      finalKB = best.size / 1024;
+    }
+
     return {
       blob:          best,
       quality:       bestQ,
       sizeKB:        Math.round(finalKB * 10) / 10,
       withinTarget:  finalKB <= maxSizeKB,
-      belowMin:      minSizeKB && finalKB < minSizeKB,
+      belowMin:      false, // forced false via padBlob
       qualityWarning: bestQ < QUALITY_FLOOR,
       qualityPercent: Math.round(bestQ * 100),
     };
@@ -332,7 +395,7 @@ const Compress = (() => {
     urls.forEach(u => { if (u) URL.revokeObjectURL(u); });
   }
 
-  return { compress, compressBothFormats, revokeUrls };
+  return { compress, compressBothFormats, revokeUrls, preScale, padBlob };
 })();
 
 window.Compress = Compress;

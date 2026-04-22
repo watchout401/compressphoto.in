@@ -196,9 +196,23 @@ const App = (() => {
       return;
     }
 
-    // Reading done — hide bar, show preview
+    // Reading done — hide bar
     await sleep(250);  // Brief pause so user sees 100%
     if (readWrap) readWrap.style.display = 'none';
+
+    // ── FAST PRE-SCALE: Prevent RAM crashes on high-megapixel cameras
+    try {
+      const scaledBlob = await Compress.preScale(file, 1800);
+      if (scaledBlob !== file) {
+        // Reconstruct File object to keep filename for preview
+        file = new File([scaledBlob], file.name || 'image.jpg', {
+          type: scaledBlob.type,
+          lastModified: Date.now()
+        });
+      }
+    } catch (e) {
+      console.warn("Pre-scaling failed, falling back to original", e);
+    }
 
     _currentFile = file;
     showPreview(file);
