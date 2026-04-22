@@ -16,7 +16,7 @@
 // ──────────────────────────────────────────────────────────
 const STORAGE_KEY    = 'cp_admin_examdata';
 const SESSION_KEY    = 'cp_admin_authed';
-const ADMIN_PASSWORD = 'admin123';           // Change in production!
+const ADMIN_PASSWORD = 'Chingu@15';           // Change in production!
 
 const BG_HEX_MAP = {
   white: '#FFFFFF',
